@@ -40,13 +40,16 @@ int main (void)
 	/* Insert system clock initialization code here (sysclk_init()). */
 	sysclk_init();
 	board_init();
+	cpu_irq_enable();
+	
+	irq_initialize_vectors();
+	//irq_register_handler(CAN0_IRQn,12); // this is prvInit, double check
 	
 	prvInitializeInterruptPriorities();
 	NVIC_SetPriorityGrouping(0);
-
-	
 	
 	can_init_asf();
+	//can_enable_interrupt(CAN1,CAN_IER_MB0); // CAN1 receiving in mailbox 0
 	
 
 	

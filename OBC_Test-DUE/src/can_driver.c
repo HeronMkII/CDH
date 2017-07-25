@@ -15,7 +15,7 @@
 void CAN1_Handler(void)
 {
 	while (1);
-
+	// Do some kind of LED test here. Blink 3 times or something idk what the pins are on the CDH board
 }
 
 
