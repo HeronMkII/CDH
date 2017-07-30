@@ -14,8 +14,7 @@
 
 void CAN1_Handler(void)
 {
-	while (1);
-	// Do some kind of LED test here. Blink 3 times or something idk what the pins are on the CDH board
+	gpio_set_pin_low(LED);
 }
 
 
@@ -42,7 +41,7 @@ void can_init_asf(){
 	can1_mailbox.ul_mb_idx = 0;
 	can1_mailbox.uc_obj_type = CAN_MB_RX_MODE;
 	can1_mailbox.ul_id_msk = CAN_MAM_MIDvA_Msk | CAN_MAM_MIDvB_Msk;
-	can1_mailbox.ul_id = CAN_MID_MIDvA(0x07);
+	can1_mailbox.ul_id = CAN_MID_MIDvA(0x00);
 	can_mailbox_init(CAN1, &can1_mailbox);
 	
 	can0_mailbox.ul_mb_idx = 0;

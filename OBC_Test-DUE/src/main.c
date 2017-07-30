@@ -30,53 +30,63 @@
  */
 #include <asf.h>
 #include <can_driver.h>
+#include <usart_itf.h>
 
 /*  Initialize the priorities of various interrupts on the Cortex-M3 System */
 static void prvInitializeInterruptPriorities(void);
 
-
 int main (void)
 {
-	/* Insert system clock initialization code here (sysclk_init()). */
 	sysclk_init();
 	board_init();
 	cpu_irq_enable();
-	
+
+	// Initialize CAN interrupts		
 	irq_initialize_vectors();
-	//irq_register_handler(CAN0_IRQn,12); // this is prvInit, double check
-	
 	prvInitializeInterruptPriorities();
 	NVIC_SetPriorityGrouping(0);
-	
-	can_init_asf();
-	//can_enable_interrupt(CAN1,CAN_IER_MB0); // CAN1 receiving in mailbox 0
-	
 
+	can_init_asf();
+
+	// Initialize the USART
+	usart_clear();
+	usart_init();
 	
-	while(1){
-		
+	gpio_set_pin_high(LED); // CAN interrupt will set this low
+	
+	// Uncomment this loop to send CAN messages as well as receive
+	
+	/*while(1){
 		can_send(123, 456, 1, 1, 1);
 		can_global_send_transfer_cmd(CAN0, CAN_TCR_MB0);
-
-
-	}
+	}*/
 	
+	// A simple USART test
 	
+	const char* test = "test string";
+	writes(test);
+	
+	char space = ' ';
+	writec(space);
+	
+	uint32_t itest = 123;
+	writei(itest);
+	
+	while(1);
 	return 0;
 }
 
 static void prvInitializeInterruptPriorities(void)
 {
-	uint32_t priority = 11;
 	IRQn_Type can1_int_num = (IRQn_Type)44;
 	IRQn_Type can0_int_num = (IRQn_Type)43;
 		
+	NVIC_ClearPendingIRQ(can0_int_num);
+	NVIC_ClearPendingIRQ(can1_int_num);
+	
+	uint32_t priority = 11;
 	NVIC_SetPriority(can1_int_num, priority);
 	
 	priority = 12;	
 	NVIC_SetPriority(can0_int_num, priority);
-	
-	priority = NVIC_GetPriority(can1_int_num);
-	
-	return;
 }

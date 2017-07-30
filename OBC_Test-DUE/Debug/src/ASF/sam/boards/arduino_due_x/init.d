@@ -133,7 +133,8 @@ src/ASF/sam/boards/arduino_due_x/init.d \
  ../src/ASF/common/services/clock/sam3x/osc.h \
  ../src/ASF/sam/drivers/pmc/pmc.h ../src/ASF/common/services/clock/pll.h \
  ../src/ASF/common/services/clock/sam3x/pll.h ../src/can_driver.h \
- ../src/asf/sam/drivers/can/can.h ../src/ASF/sam/drivers/can/can.h
+ ../src/asf/sam/drivers/can/can.h ../src/ASF/sam/drivers/can/can.h \
+ ../src/ASF/common/services/gpio/sam_gpio/sam_gpio.h
 
 ../src/ASF/sam/utils/compiler.h:
 
@@ -410,3 +411,5 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 ../src/asf/sam/drivers/can/can.h:
 
 ../src/ASF/sam/drivers/can/can.h:
+
+../src/ASF/common/services/gpio/sam_gpio/sam_gpio.h:

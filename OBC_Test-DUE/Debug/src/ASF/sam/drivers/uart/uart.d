@@ -1,5 +1,5 @@
-src/can_driver.d src/can_driver.o: ../src/can_driver.c \
- ../src/can_driver.h ../src/asf/sam/drivers/can/can.h \
+src/ASF/sam/drivers/uart/uart.d src/ASF/sam/drivers/uart/uart.o: \
+ ../src/ASF/sam/drivers/uart/uart.c ../src/ASF/sam/drivers/uart/uart.h \
  ../src/ASF/sam/utils/compiler.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.2.1\include\stddef.h \
  ../src/ASF/common/utils/parts.h \
@@ -117,22 +117,9 @@ src/can_driver.d src/can_driver.o: ../src/can_driver.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\stdlib.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\alloca.h \
  ../src/ASF/common/utils/interrupt.h \
- ../src/ASF/common/utils/interrupt/interrupt_sam_nvic.h \
- ../src/ASF/common/boards/board.h \
- ../src/ASF/sam/boards/arduino_due_x/arduino_due_x.h \
- ../src/ASF/sam/utils/cmsis/sam3x/source/templates/exceptions.h \
- ../src/ASF/common/services/clock/sysclk.h ../src/config/conf_clock.h \
- ../src/ASF/common/services/clock/sam3x/sysclk.h \
- ../src/ASF/common/services/clock/osc.h \
- ../src/ASF/common/services/clock/sam3x/osc.h \
- ../src/ASF/sam/drivers/pmc/pmc.h ../src/ASF/common/services/clock/pll.h \
- ../src/ASF/common/services/clock/sam3x/pll.h ../src/config/conf_board.h \
- ../src/ASF/sam/drivers/pio/pio.h ../src/ASF/sam/drivers/can/can.h \
- ../src/ASF/common/services/gpio/sam_gpio/sam_gpio.h
+ ../src/ASF/common/utils/interrupt/interrupt_sam_nvic.h
 
-../src/can_driver.h:
-
-../src/asf/sam/drivers/can/can.h:
+../src/ASF/sam/drivers/uart/uart.h:
 
 ../src/ASF/sam/utils/compiler.h:
 
@@ -369,33 +356,3 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 ../src/ASF/common/utils/interrupt.h:
 
 ../src/ASF/common/utils/interrupt/interrupt_sam_nvic.h:
-
-../src/ASF/common/boards/board.h:
-
-../src/ASF/sam/boards/arduino_due_x/arduino_due_x.h:
-
-../src/ASF/sam/utils/cmsis/sam3x/source/templates/exceptions.h:
-
-../src/ASF/common/services/clock/sysclk.h:
-
-../src/config/conf_clock.h:
-
-../src/ASF/common/services/clock/sam3x/sysclk.h:
-
-../src/ASF/common/services/clock/osc.h:
-
-../src/ASF/common/services/clock/sam3x/osc.h:
-
-../src/ASF/sam/drivers/pmc/pmc.h:
-
-../src/ASF/common/services/clock/pll.h:
-
-../src/ASF/common/services/clock/sam3x/pll.h:
-
-../src/config/conf_board.h:
-
-../src/ASF/sam/drivers/pio/pio.h:
-
-../src/ASF/sam/drivers/can/can.h:
-
-../src/ASF/common/services/gpio/sam_gpio/sam_gpio.h:

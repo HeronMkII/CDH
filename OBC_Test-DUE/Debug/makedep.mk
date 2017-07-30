@@ -2,7 +2,13 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+src\ASF\common\services\serial\usart_serial.c
+
 src\ASF\sam\components\can\sn65hvd234.c
+
+src\ASF\sam\drivers\uart\uart.c
+
+src\ASF\sam\drivers\usart\usart.c
 
 src\queues.c
 

@@ -21,6 +21,7 @@
 #include <conf_clock.h>
 #include <pio.h>
 #include <can.h>
+#include <sam_gpio/sam_gpio.h>
 
 /* CAN Structures */
 
@@ -90,7 +91,8 @@ can_mb_conf_t can1_mailbox;
 #define CAN1_MB6_PRIO			0
 #define CAN1_MB7_PRIO			0
 
-
+// LED used for testing. LED2_GPIO for CDH SAM3X board, LED0_GPIO for Arduino Due
+#define LED LED2_GPIO
 
 
 /* Functions */
