@@ -57,7 +57,7 @@ int main (void)
 	// Uncomment this loop to send CAN messages as well as receive
 	
 	/*while(1){
-		can_send(123, 456, 1, 1, 1);
+		can_send(0x05, 0x0a, 1, 1, 1);						// Expecting 5 blinks, 3 seconds pause, then 10 blinks
 		can_global_send_transfer_cmd(CAN0, CAN_TCR_MB0);
 	}*/
 	

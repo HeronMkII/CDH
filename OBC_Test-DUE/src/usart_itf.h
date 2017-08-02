@@ -22,5 +22,6 @@ void usart_clear(void);
 void writec(char c);
 void writes(char* str);
 void writei(uint32_t i);
+void blinkN(uint32_t n, int per_ms);
 
 #endif /* USART_ITF_H_ */

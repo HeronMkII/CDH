@@ -50,3 +50,13 @@ void writes(const char* str){
 void writei(uint32_t i){
 	usart_write(USART,i);
 }
+
+// General testing, when Serial isn't available!
+void blinkN(uint32_t n, int per_ms){
+	for(uint32_t i = 0; i < n; i++){
+		gpio_set_pin_high(LED);
+		delay_ms(per_ms);
+		gpio_set_pin_low(LED);
+		delay_ms(per_ms);
+	}
+}
