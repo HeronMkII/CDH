@@ -14,7 +14,27 @@
 
 void CAN1_Handler(void)
 {
+	NVIC_ClearPendingIRQ(CAN1_IRQn);
+	NVIC_DisableIRQ(CAN1_IRQn);
+	
+	uint32_t ul_status = can_mailbox_get_status(CAN1,0);
+	if ((ul_status & CAN_MSR_MRDY) == CAN_MSR_MRDY) {
+		can1_mailbox.ul_mb_idx = 0;
+		can1_mailbox.ul_status = ul_status;
+		can_mailbox_read(CAN1, &can1_mailbox);
+	}
+	
 	gpio_set_pin_low(LED);
+	uint32_t low = can1_mailbox.ul_datal;
+	uint32_t high = can1_mailbox.ul_datah;
+
+//	writei(low);
+//	writei(high);
+
+	blinkN(low , 250);	delay_s(3);
+	blinkN(high, 250);
+	
+	irq_register_handler(CAN1_IRQn,11);
 }
 
 
@@ -31,17 +51,10 @@ void can_init_asf(){
 	can_init(CAN0, ul_sysclk, CAN_BPS_50K);
 	can_init(CAN1, ul_sysclk, CAN_BPS_50K);
 	
-
-	
-	can_reset_all_mailbox(CAN0);
-	can_reset_all_mailbox(CAN1);
-	
-
-	
 	can1_mailbox.ul_mb_idx = 0;
 	can1_mailbox.uc_obj_type = CAN_MB_RX_MODE;
 	can1_mailbox.ul_id_msk = CAN_MAM_MIDvA_Msk | CAN_MAM_MIDvB_Msk;
-	can1_mailbox.ul_id = CAN_MID_MIDvA(0x00);
+	can1_mailbox.ul_id = CAN_MID_MIDvA(0x00); // This is 0?
 	can_mailbox_init(CAN1, &can1_mailbox);
 	
 	can0_mailbox.ul_mb_idx = 0;
@@ -187,8 +200,8 @@ uint8_t can_send(uint32_t low, uint32_t high, uint8_t mailbox_id, uint8_t msg_ID
 	can0_mailbox.ul_id_msk = 0;
 	can_mailbox_init(CAN0, &can0_mailbox);
 	can0_mailbox.ul_id = CAN_MID_MIDvA(0x00);
-	can0_mailbox.ul_datal = 0x0F0F0F0F;
-	can0_mailbox.ul_datah = 0x0F0F0F0F;
+	can0_mailbox.ul_datal = low;
+	can0_mailbox.ul_datah = high;
 	can0_mailbox.uc_length = 8;
 	can_mailbox_write(CAN0, &can0_mailbox);
 	
