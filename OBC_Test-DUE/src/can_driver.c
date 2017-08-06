@@ -22,9 +22,7 @@ void CAN1_Handler(void)
 void can_init_asf(){
 	
 	uint32_t ul_sysclk = sysclk_get_cpu_hz();
-	
-	
-	
+
 	pmc_enable_periph_clk(ID_CAN0);
 	pmc_enable_periph_clk(ID_CAN1);
 	
@@ -32,12 +30,9 @@ void can_init_asf(){
 	can_init(CAN1, ul_sysclk, CAN_BPS_50K);
 	
 
-	
 	can_reset_all_mailbox(CAN0);
 	can_reset_all_mailbox(CAN1);
-	
 
-	
 	can1_mailbox.ul_mb_idx = 0;
 	can1_mailbox.uc_obj_type = CAN_MB_RX_MODE;
 	can1_mailbox.ul_id_msk = CAN_MAM_MIDvA_Msk | CAN_MAM_MIDvB_Msk;
@@ -108,7 +103,7 @@ uint8_t can_initialize(){
 	Purpose: Makes a single CAN mailbox struct on either 
 	controller for use as a TX or RX mailbox
 	
-	Note: Out of the 6 mailbox modes, only two can be initialized here. 
+	Note: Out of the 6 mailbox modes, only two can be initialized here (Tx/Rx). 
 	The function assumes standard (not extended) frames
 	
 	Parameters: 
